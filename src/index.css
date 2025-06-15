@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden !important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body {
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    font-variant-ligatures: common-ligatures;
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-bold rounded-full shadow-glow hover:shadow-glow-pink transform hover:scale-105 transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-4 bg-surface border-2 border-primary text-primary font-bold rounded-full hover:bg-primary hover:text-white transform hover:scale-105 transition-all duration-300 shadow-lg;
+  }
+
+  .card-hover {
+    @apply transform hover:scale-105 hover:-translate-y-2 transition-all duration-300;
+  }
+
+  .glass-effect {
+    @apply bg-surface/80 backdrop-blur-sm border border-primary/20;
+  }
+}
+
+@layer utilities {
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-3000 {
+    animation-delay: 3s;
+  }
+
+  /* Instagram embed fixes */
+  .instagram-embed-container {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .instagram-embed-container iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .instagram-media {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: auto !important;
+    margin: 0 auto !important;
+  }
+
+  /* Prevent horizontal scroll */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Ensure no elements cause horizontal overflow */
+  .overflow-x-hidden {
+    overflow-x: hidden !important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Prevent any element from exceeding viewport width */
+  #root {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden !important;
+  }
+
+  /* Ensure all containers respect viewport width */
+  .container,
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl,
+  .max-w-3xl,
+  .max-w-2xl {
+    max-width: calc(100vw - 2rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (min-width: 640px) {
+    .max-w-2xl { max-width: 42rem; }
+    .max-w-3xl { max-width: 48rem; }
+    .max-w-4xl { max-width: 56rem; }
+    .max-w-5xl { max-width: 64rem; }
+    .max-w-6xl { max-width: 72rem; }
+  }
+
+  /* Smooth loading for Instagram embeds */
+  .instagram-embed-container {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Hide Instagram SDK errors from console (they're usually harmless) */
+  .instagram-media {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Ensure proper aspect ratio for Instagram embeds */
+  .instagram-media iframe {
+    border: none !important;
+    overflow: hidden !important;
+  }
+}

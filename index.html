@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lara Monajed - Marketing with a Twist</title>
+    <meta name="description" content="Creative marketing student who thrives on pushing boundaries and bringing fresh, out-of-the-box ideas to life." />
+    <meta property="og:title" content="Lara Monajed - Marketing with a Twist" />
+    <meta property="og:description" content="Creative marketing student who thrives on pushing boundaries and bringing fresh, out-of-the-box ideas to life." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#6366F1" />
+    <script
+      async
+      defer
+      src="https://www.instagram.com/embed.js"
+      id="instagram-embed-script"
+    ></script>
+    <script>
+      // Suppress harmless Instagram SDK console errors
+      const originalError = console.error;
+      console.error = function(...args) {
+        const message = args[0];
+        if (typeof message === 'string' &&
+            (message.includes('instagram.com') ||
+             message.includes('message channel closed') ||
+             message.includes('lastError'))) {
+          return; // Suppress Instagram-related errors
+        }
+        originalError.apply(console, args);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
