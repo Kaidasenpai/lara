@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState, FC } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import type { FC } from 'react';
 
 interface Props {
   html: string;
@@ -10,8 +11,8 @@ const InstagramEmbed: FC<Props> = ({ html }) => {
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    let intervalId: NodeJS.Timeout;
+    let timeoutId: number;
+    let intervalId: number;
 
     // Reset states when html changes
     setIsLoaded(false);
@@ -47,20 +48,20 @@ const InstagramEmbed: FC<Props> = ({ html }) => {
     };
 
     // Small delay to ensure DOM is ready
-    const initTimer = setTimeout(() => {
+    const initTimer = window.setTimeout(() => {
       // Try to process immediately if SDK is already loaded
       if (!processEmbeds()) {
         // If not loaded, wait for it with a timeout
-        intervalId = setInterval(() => {
+        intervalId = window.setInterval(() => {
           if (processEmbeds()) {
-            clearInterval(intervalId);
+            window.clearInterval(intervalId);
           }
         }, 500);
 
         // Stop trying after 8 seconds
-        timeoutId = setTimeout(() => {
+        timeoutId = window.setTimeout(() => {
           if (intervalId) {
-            clearInterval(intervalId);
+            window.clearInterval(intervalId);
           }
           if (!isLoaded) {
             setHasError(true);
@@ -70,9 +71,9 @@ const InstagramEmbed: FC<Props> = ({ html }) => {
     }, 100);
 
     return () => {
-      if (initTimer) clearTimeout(initTimer);
-      if (timeoutId) clearTimeout(timeoutId);
-      if (intervalId) clearInterval(intervalId);
+      if (initTimer) window.clearTimeout(initTimer);
+      if (timeoutId) window.clearTimeout(timeoutId);
+      if (intervalId) window.clearInterval(intervalId);
     };
   }, [html, isLoaded]);
 
